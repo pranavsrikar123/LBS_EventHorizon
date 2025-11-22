@@ -1,0 +1,80 @@
+[
+  {
+    "persona_id": "tech_innovators",
+    "description": "Students passionate about technology, AI, and startups",
+    "programs": ["MBA2025", "MiM"],
+    "avg_attendance_rate": 75,
+    "preferred_event_types": ["Technology", "Entrepreneurship"],
+    "preferred_days": ["Tuesday", "Thursday"],
+    "preferred_time": "Evening (18:00-20:00)",
+    "motivators": ["Learning new technologies", "Networking with tech professionals", "Innovation", "Hands-on workshops"],
+    "conversion_rate": 85,
+    "email_hooks": ["Limited seats", "Exclusive tech demo", "Industry leaders", "Cutting-edge"],
+    "behavioral_notes": "Responds well to FOMO tactics. High show-up rate if alcohol is served."
+  },
+  {
+    "persona_id": "career_climbers",
+    "description": "Highly focused students attending career-advancing events",
+    "programs": ["MBA2024", "MBA2025", "Executive MBA"],
+    "avg_attendance_rate": 90,
+    "preferred_event_types": ["Finance", "Consulting", "Career", "Professional"],
+    "preferred_days": ["Tuesday", "Wednesday"],
+    "preferred_time": "Lunch (12:00-14:00) or Early Evening (18:00-19:00)",
+    "motivators": ["Career advancement", "Recruiting opportunities", "C-suite speakers", "Industry connections"],
+    "conversion_rate": 70,
+    "email_hooks": ["Exclusive access", "Recruiting pipeline", "Fast-track", "Industry leaders"],
+    "behavioral_notes": "Very reliable attendance. Rarely flakes if event has clear career value."
+  },
+  {
+    "persona_id": "social_connectors",
+    "description": "Students who attend events for networking and socializing",
+    "programs": ["MBA2025", "MiM", "MBA2024"],
+    "avg_attendance_rate": 50,
+    "preferred_event_types": ["Social", "Networking", "Entertainment"],
+    "preferred_days": ["Thursday", "Friday"],
+    "preferred_time": "Evening (17:30-21:00)",
+    "motivators": ["Meeting new people", "Fun atmosphere", "Alcohol/food", "Friend attendance"],
+    "conversion_rate": 45,
+    "email_hooks": ["Your classmates are going", "Open bar", "Great networking", "Casual atmosphere"],
+    "behavioral_notes": "Highly influenced by social proof. Attendance spikes if they know others are going."
+  },
+  {
+    "persona_id": "finance_enthusiasts",
+    "description": "Students focused on finance, banking, and investment careers",
+    "programs": ["MBA2024", "MBA2025", "MFA"],
+    "avg_attendance_rate": 85,
+    "preferred_event_types": ["Finance", "Economics", "Investment"],
+    "preferred_days": ["Tuesday", "Wednesday", "Thursday"],
+    "preferred_time": "Lunch (12:00-14:00)",
+    "motivators": ["Market insights", "Alumni from top banks", "PE/VC connections", "Financial modeling workshops"],
+    "conversion_rate": 82,
+    "email_hooks": ["Bulge bracket alumni", "Exclusive insights", "Market trends", "IB recruiting"],
+    "behavioral_notes": "Extremely committed. Only skip if exam conflict."
+  },
+  {
+    "persona_id": "impact_seekers",
+    "description": "Students interested in social impact, sustainability, and purpose-driven careers",
+    "programs": ["MBA2025", "MiM", "Executive MBA"],
+    "avg_attendance_rate": 68,
+    "preferred_event_types": ["Sustainability", "Social Impact", "Non-profit"],
+    "preferred_days": ["Tuesday", "Wednesday", "Thursday"],
+    "preferred_time": "Evening (18:00-20:00)",
+    "motivators": ["Making a difference", "ESG topics", "Social entrepreneurship", "Purpose-driven networking"],
+    "conversion_rate": 60,
+    "email_hooks": ["Change the world", "Impact stories", "Sustainability leaders", "Purpose-driven"],
+    "behavioral_notes": "Attend if topic aligns with values. Less influenced by alcohol/food."
+  },
+  {
+    "persona_id": "entrepreneurs",
+    "description": "Students building startups or interested in entrepreneurship",
+    "programs": ["MBA2025", "Executive MBA", "MiM"],
+    "avg_attendance_rate": 80,
+    "preferred_event_types": ["Entrepreneurship", "Technology", "Startup"],
+    "preferred_days": ["Thursday", "Tuesday"],
+    "preferred_time": "Evening (18:00-21:00)",
+    "motivators": ["Finding co-founders", "VC connections", "Pitch practice", "Startup ecosystem"],
+    "conversion_rate": 78,
+    "email_hooks": ["Meet investors", "Pitch opportunity", "Startup ecosystem", "Co-founder matching"],
+    "behavioral_notes": "Highly engaged. Often stay after event to network."
+  }
+]

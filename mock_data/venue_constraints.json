@@ -1,0 +1,137 @@
+{
+  "Nash Lounge": {
+    "capacity": 120,
+    "alcohol_permitted": true,
+    "av_equipped": false,
+    "license_note": "Catering must be notified 30 days ahead for alcohol",
+    "ideal_for": "Networking, Social events, Panels",
+    "booking_lead_time": 7,
+    "cost_indicator": "££"
+  },
+  "Sainsbury Theatre": {
+    "capacity": 250,
+    "alcohol_permitted": false,
+    "av_equipped": true,
+    "license_note": "Teaching priority - NO alcohol permitted. Check academic calendar.",
+    "ideal_for": "Large lectures, Presentations, Competitions",
+    "booking_lead_time": 14,
+    "cost_indicator": "£££"
+  },
+  "Windsor Theatre": {
+    "capacity": 180,
+    "alcohol_permitted": true,
+    "av_equipped": true,
+    "license_note": "Requires 48hr AV team notice for recording",
+    "ideal_for": "Panels, Presentations, Speaker events",
+    "booking_lead_time": 10,
+    "cost_indicator": "£££"
+  },
+  "Sammy Ofer Centre - Garden": {
+    "capacity": 400,
+    "alcohol_permitted": true,
+    "av_equipped": false,
+    "license_note": "Weather dependent. Registration desk must be booked for 50+ external guests.",
+    "ideal_for": "Large receptions, Outdoor events",
+    "booking_lead_time": 21,
+    "cost_indicator": "££££"
+  },
+  "Sammy Ofer Centre - Upper Link": {
+    "capacity": 150,
+    "alcohol_permitted": true,
+    "av_equipped": false,
+    "license_note": "Register external visitors at Sammy Ofer reception. 30-day alcohol notice.",
+    "ideal_for": "Networking, Cocktail receptions",
+    "booking_lead_time": 14,
+    "cost_indicator": "£££"
+  },
+  "Sammy Ofer Centre - Lower Link": {
+    "capacity": 200,
+    "alcohol_permitted": true,
+    "av_equipped": true,
+    "license_note": "External catering requires pre-approval from cateringevents@london.edu",
+    "ideal_for": "Large receptions, Networking events",
+    "booking_lead_time": 14,
+    "cost_indicator": "£££"
+  },
+  "LT1": {
+    "capacity": 90,
+    "alcohol_permitted": false,
+    "av_equipped": true,
+    "license_note": "Teaching priority - check academic calendar. NO alcohol.",
+    "ideal_for": "Workshops, Lectures, Small presentations",
+    "booking_lead_time": 3,
+    "cost_indicator": "£"
+  },
+  "LT2": {
+    "capacity": 85,
+    "alcohol_permitted": false,
+    "av_equipped": true,
+    "license_note": "Teaching priority - check academic calendar. NO alcohol.",
+    "ideal_for": "Workshops, Lectures, Bootcamps",
+    "booking_lead_time": 3,
+    "cost_indicator": "£"
+  },
+  "LT3": {
+    "capacity": 70,
+    "alcohol_permitted": false,
+    "av_equipped": true,
+    "license_note": "Teaching priority - check academic calendar. NO alcohol.",
+    "ideal_for": "Small workshops, Team presentations",
+    "booking_lead_time": 3,
+    "cost_indicator": "£"
+  },
+  "Nuffield Hall": {
+    "capacity": 300,
+    "alcohol_permitted": true,
+    "av_equipped": true,
+    "license_note": "Requires 48hr AV team notice for recording. Alcohol permitted with 30-day notice.",
+    "ideal_for": "Keynotes, Large conferences, Major events",
+    "booking_lead_time": 14,
+    "cost_indicator": "£££"
+  },
+  "Regents Room": {
+    "capacity": 80,
+    "alcohol_permitted": true,
+    "av_equipped": false,
+    "license_note": "Intimate venue. 30-day notice for alcohol service.",
+    "ideal_for": "Small receptions, Program events, Dinners",
+    "booking_lead_time": 10,
+    "cost_indicator": "££"
+  },
+  "Garden Room": {
+    "capacity": 60,
+    "alcohol_permitted": true,
+    "av_equipped": false,
+    "license_note": "Ground floor venue. Good for casual events.",
+    "ideal_for": "Small panels, Workshops, Social gatherings",
+    "booking_lead_time": 7,
+    "cost_indicator": "££"
+  },
+  "Sussex Room": {
+    "capacity": 50,
+    "alcohol_permitted": true,
+    "av_equipped": false,
+    "license_note": "Boardroom style. Good for small gatherings.",
+    "ideal_for": "Small panels, Intimate discussions, Program events",
+    "booking_lead_time": 7,
+    "cost_indicator": "££"
+  },
+  "Front Lawn": {
+    "capacity": 500,
+    "alcohol_permitted": true,
+    "av_equipped": false,
+    "license_note": "Weather dependent, requires marquee backup plan. Alcohol only for managed events.",
+    "ideal_for": "Summer parties, Major celebrations, Graduation events",
+    "booking_lead_time": 30,
+    "cost_indicator": "££££"
+  },
+  "Council Chamber": {
+    "capacity": 40,
+    "alcohol_permitted": true,
+    "av_equipped": true,
+    "license_note": "Premium boardroom. Requires senior approval.",
+    "ideal_for": "Executive sessions, Small high-level events",
+    "booking_lead_time": 14,
+    "cost_indicator": "£££"
+  }
+}
