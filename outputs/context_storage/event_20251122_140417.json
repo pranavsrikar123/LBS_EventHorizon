@@ -1,0 +1,153 @@
+{
+  "session_id": "event_20251122_140417",
+  "created_at": "2025-11-22T14:04:17.654448",
+  "event_details": {
+    "name": "AI & Entrepreneurship Summit",
+    "type": "Technology",
+    "date": "2025-12-13",
+    "time": "18:00:00",
+    "venue": "Nash Lounge",
+    "size": 150,
+    "alcohol": false,
+    "external": false,
+    "tags": [
+      "AI & Machine Learning",
+      "Entrepreneurship"
+    ],
+    "programs": [
+      "MBA2025"
+    ]
+  },
+  "initial_results": {
+    "prediction": {
+      "interested_pool": 165,
+      "expected_registration": 132,
+      "predicted_attendance": 118,
+      "flake_rate": 10,
+      "confidence": "HIGH",
+      "reasoning": "**STEP 1: AUDIENCE POOL ANALYSIS**\nTarget Programs: MBA2025\nTotal Student Pool: 500 students across selected programs\n\nInterest Analysis:\n- Event Type \"Technology\": Base interest rate 33%\n- Tag Adjustments: +8-10%\n- Interested Pool: 165 students\n\n**STEP 2: REGISTRATION FORECAST**\nDay Impact: Thursday = 95% registration rate\nTime Impact: 18:00 = 100% optimal timing\nNo Alcohol: 0%\nInternal Only: 0%\n\nFormula: 165 \u00d7 0.95 \u00d7 1.00 \u00d7 1.00 \u00d7 1.00\nPredicted Registrations: 132\n\n**STEP 3: FLAKE RATE CALCULATION**\nBase Flake Rate: 20%\n- Thursday adjustment: -10%\n- Time 18:00 adjustment: 0%\n- Event type \"Technology\": 0%\n- No alcohol: 0%\n\nFinal Flake Rate: 10%\n\n**STEP 4: FINAL PREDICTION**\n132 registrations \u00d7 (1 - 10.00%) = 118 actual attendees",
+      "recommendations": [],
+      "breakdown": {
+        "total_pool": 500,
+        "interest_rate": 0.33,
+        "day_factor": 0.95,
+        "time_factor": 1.0,
+        "alcohol_boost": 1.0,
+        "speaker_boost": 1.0
+      }
+    },
+    "compliance": {
+      "venue_suitable": false,
+      "issues": [
+        "Capacity issue: Nash Lounge holds 120, you need 132"
+      ],
+      "alternatives": [
+        "Sainsbury Theatre (capacity: 250)",
+        "Windsor Theatre (capacity: 180)",
+        "Sammy Ofer Centre - Garden (capacity: 400)"
+      ],
+      "actions_required": [
+        "Book venue at least 7 days in advance"
+      ],
+      "reasoning": "\n**VENUE ANALYSIS: Nash Lounge**\nCapacity: 120 (Required: 132)\nAlcohol Permitted: \u2705 Yes\nAV Equipment: \u274c Not available\nBooking Lead Time: 7 days\nCost: \u00c2\u00a3\u00c2\u00a3\n\n**COMPLIANCE CHECK:**\n\u274c Issues found - see below\n",
+      "venue_info": {
+        "capacity": 120,
+        "alcohol_permitted": true,
+        "av_equipped": false,
+        "license_note": "Catering must be notified 30 days ahead for alcohol",
+        "ideal_for": "Networking, Social events, Panels",
+        "booking_lead_time": 7,
+        "cost_indicator": "\u00c2\u00a3\u00c2\u00a3"
+      }
+    },
+    "logistics": {
+      "timeline": [
+        [
+          "Nov 13",
+          "Submit alcohol request (if required)"
+        ],
+        [
+          "Nov 22",
+          "Open event registration"
+        ],
+        [
+          "Nov 29",
+          "External speaker security clearance due"
+        ],
+        [
+          "Dec 06",
+          "Send first reminder email"
+        ],
+        [
+          "Dec 11",
+          "Finalize headcount with catering"
+        ],
+        [
+          "Dec 13",
+          "\ud83c\udf89 Event Day!"
+        ]
+      ],
+      "budget": 3450,
+      "predicted_waste": 350,
+      "catering_cost": 2950,
+      "venue_cost": 500,
+      "av_cost": 0,
+      "reasoning": "\n**BUDGET OPTIMIZATION ANALYSIS**\n\nCatering Strategy:\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\nTraditional Approach (Order for all registered):\n- 132 registrations \u00d7 \u00a325 per person\n- Total: \u00a33,300\n\n\u26a0\ufe0f THE PROBLEM:\nBased on 10% predicted flake rate, only 118 will actually attend.\n- Unused meals: 14\n- Wasted food cost: 14 \u00d7 \u00a325 = \u00a3350\n\n\u2705 SMART APPROACH (Order for predicted attendance):\n- 118 predicted attendees \u00d7 \u00a325\n- Catering cost: \u00a32,950\n- **SAVINGS: \u00a3350**\n\nAdditional Costs:\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\nVenue: \u00a3500 (\u00c2\u00a3\u00c2\u00a3)\nAV: Included\n\n**TOTAL SMART BUDGET: \u00a33,450**\n\n\ud83d\udca1 Key Insight: Order for 118, not 132\nThis prevents \u00a3350 in wasted catering!\n",
+      "breakdown": {
+        "cost_per_head": 25,
+        "smart_order_quantity": 118,
+        "waste_if_overorder": 350
+      }
+    },
+    "marketing": {
+      "personas": [
+        {
+          "name": "Students passionate about technology, AI, and startups",
+          "id": "tech_innovators",
+          "conversion": "85%",
+          "avg_attendance": 75,
+          "motivators": "Learning new technologies, Networking with tech professionals"
+        },
+        {
+          "name": "Students building startups or interested in entrepreneurship",
+          "id": "entrepreneurs",
+          "conversion": "78%",
+          "avg_attendance": 80,
+          "motivators": "Finding co-founders, VC connections"
+        },
+        {
+          "name": "Highly focused students attending career-advancing events",
+          "id": "career_climbers",
+          "conversion": "70%",
+          "avg_attendance": 90,
+          "motivators": "Career advancement, Recruiting opportunities"
+        }
+      ],
+      "expected_boost": 31,
+      "reasoning": "\n**TARGET AUDIENCE IDENTIFICATION**\n\nBased on event type \"Technology\" and tags, identified 3 key personas:\n\n1. **Students passionate about technology, AI, and startups**\n   - Conversion Rate: 85%\n   - Key Motivators: Learning new technologies, Networking with tech professionals\n\n2. **Students building startups or interested in entrepreneurship**\n   - Conversion Rate: 78%\n   - Key Motivators: Finding co-founders, VC connections\n\n3. **Highly focused students attending career-advancing events**\n   - Conversion Rate: 70%\n   - Key Motivators: Career advancement, Recruiting opportunities\n\n**EXPECTED IMPACT:**\nTargeted marketing to these personas can boost attendance by 31% vs. generic approach.\n\n**RECOMMENDATION:**\nCreate personalized email campaigns for each persona type, emphasizing their specific motivators.\n"
+    }
+  },
+  "conversation_history": [
+    {
+      "timestamp": "2025-11-22T14:04:31.112191",
+      "question": "why is the flake rate high",
+      "answer": "Error consulting Prediction Agent: Error code: 401 - {'error': {'message': 'Incorrect API key provided: 8ddb5a18********************5448. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}",
+      "agent_used": [
+        "Prediction Agent"
+      ],
+      "reasoning": "**Routing Decision:**\nQuestion about attendance, patterns, or predictions \u2192 Prediction Agent\n\n**Prediction Agent Analysis:**\nTechnical issue occurred while querying Prediction Agent: Traceback (most recent call last):\n  File \"D:\\LBS\\Events\\AI Agent Cup\\event_horizon\\agents\\supervisor_agent.py\", line 459, in _query_specialist_agent\n    result = specialist_crew.kickoff()\n  File \"D:\\LBS\\Events\\AI Agent Cup\\venv\\Lib\\site-packages\\crewai\\crew.py\", line 706, in kickoff\n    result = self._run_sequential_process()\n  File \"D:\\LBS\\Events\\AI Agent Cup\\venv\\Lib\\site-packages\\crewai\\crew.py\", line 823, in _run_sequential_process\n    return self._execute_tasks(self.tasks)\n           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^\n  File \"D:\\LBS\\Events\\AI Agent Cup\\venv\\Lib\\site-packages\\crewai\\crew.py\", line 931, in _execute_tasks\n    task_output = task.execute_sync(\n        agent=agent_to_use,\n        context=context,\n        tools=tools_for_task,\n    )\n  File \"D:\\LBS\\Events\\AI Agent Cup\\venv\\Lib\\site-packages\\crewai\\task.py\", line 458, in execute_sync\n    return self._execute_core(agent, context, tools)\n           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\LBS\\Events\\AI Agent Cup\\venv\\Lib\\site-packages\\crewai\\task.py\", line 591, in _execute_core\n    raise e  # Re-raise the exception after emitting the event\n    ^^^^^^^\n  File \"D:\\LBS\\Events\\AI Agent Cup\\venv\\Lib\\site-packages\\crewai\\task.py\", line 522, in _execute_core\n    result = agent.execute_task(\n        task=self,\n        context=context,\n        tools=tools,\n    )\n  File \"D:\\LBS\\Events\\AI Agent Cup\\venv\\Lib\\site-packages\\crewai\\agent\\core.py\", line 526, in execute_task\n    result = self.execute_task(task, context, tools)\n  File \"D:\\LBS\\Events\\AI Agent Cup\\venv\\Lib\\site-packages\\crewai\\agent\\core.py\", line 526, in execute_task\n    result = self.execute_task(task, context, tools)\n  File \"D:\\LBS\\Events\\AI Agent Cup\\venv\\Lib\\site-packages\\crewai\\agent\\core.py\", line 525, in execute_task\n    raise e\n  File \"D:\\LBS\\Events\\AI Agent Cup\\venv\\Lib\\site-packages\\crewai\\agent\\core.py\", line 490, in execute_task\n    result = self._execute_without_timeout(task_prompt, task)\n  File \"D:\\LBS\\Events\\AI Agent Cup\\venv\\Lib\\site-packages\\crewai\\agent\\core.py\", line 598, in _execute_without_timeout\n    return self.agent_executor.invoke(\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~^\n        {\n        ^\n    ...<4 lines>...\n        }\n        ^\n    )[\"output\"]\n    ^\n  File \"D:\\LBS\\Events\\AI Agent Cup\\venv\\Lib\\site-packages\\crewai\\agents\\crew_agent_executor.py\", line 188, in invoke\n    formatted_answer = self._invoke_loop()\n  File \"D:\\LBS\\Events\\AI Agent Cup\\venv\\Lib\\site-packages\\crewai\\agents\\crew_agent_executor.py\", line 299, in _invoke_loop\n    raise e\n  File \"D:\\LBS\\Events\\AI Agent Cup\\venv\\Lib\\site-packages\\crewai\\agents\\crew_agent_executor.py\", line 229, in _invoke_loop\n    answer = get_llm_response(\n        llm=self.llm,\n    ...<6 lines>...\n        executor_context=self,\n    )\n  File \"D:\\LBS\\Events\\AI Agent Cup\\venv\\Lib\\site-packages\\crewai\\utilities\\agent_utils.py\", line 276, in get_llm_response\n    raise e\n  File \"D:\\LBS\\Events\\AI Agent Cup\\venv\\Lib\\site-packages\\crewai\\utilities\\agent_utils.py\", line 268, in get_llm_response\n    answer = llm.call(\n        messages,\n    ...<3 lines>...\n        response_model=response_model,\n    )\n  File \"D:\\LBS\\Events\\AI Agent Cup\\venv\\Lib\\site-packages\\crewai\\llms\\providers\\openai\\completion.py\", line 196, in call\n    return self._handle_completion(\n           ~~~~~~~~~~~~~~~~~~~~~~~^\n        params=completion_params,\n        ^^^^^^^^^^^^^^^^^^^^^^^^^\n    ...<3 lines>...\n        response_model=response_model,\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"D:\\LBS\\Events\\AI Agent Cup\\venv\\Lib\\site-packages\\crewai\\llms\\providers\\openai\\completion.py\", line 414, in _handle_completion\n    raise e from e\n  File \"D:\\LBS\\Events\\AI Agent Cup\\venv\\Lib\\site-packages\\crewai\\llms\\providers\\openai\\completion.py\", line 330, in _handle_completion\n    response: ChatCompletion = self.client.chat.completions.create(**params)\n                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^\n  File \"D:\\LBS\\Events\\AI Agent Cup\\venv\\Lib\\site-packages\\openai\\_utils\\_utils.py\", line 286, in wrapper\n    return func(*args, **kwargs)\n  File \"D:\\LBS\\Events\\AI Agent Cup\\venv\\Lib\\site-packages\\openai\\resources\\chat\\completions\\completions.py\", line 1189, in create\n    return self._post(\n           ~~~~~~~~~~^\n        \"/chat/completions\",\n        ^^^^^^^^^^^^^^^^^^^^\n    ...<47 lines>...\n        stream_cls=Stream[ChatCompletionChunk],\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"D:\\LBS\\Events\\AI Agent Cup\\venv\\Lib\\site-packages\\openai\\_base_client.py\", line 1259, in post\n    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))\n                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\LBS\\Events\\AI Agent Cup\\venv\\Lib\\site-packages\\openai\\_base_client.py\", line 1047, in request\n    raise self._make_status_error_from_response(err.response) from None\nopenai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: 8ddb5a18********************5448. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}\n"
+    }
+  ],
+  "agent_notes": {
+    "Prediction Agent": [],
+    "Compliance Agent": [],
+    "Logistics Agent": [],
+    "Marketing Agent": []
+  },
+  "metadata": {
+    "total_questions": 1,
+    "agents_consulted": [
+      "Prediction Agent"
+    ]
+  }
+}

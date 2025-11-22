@@ -1,23 +1,159 @@
 from crewai import Crew, Task
-from langchain_openai import ChatOpenAI
+import requests
+import json
+from typing import List, Dict, Any, Optional
+from langchain_core.language_models.base import BaseLanguageModel
+from langchain_core.messages import BaseMessage, HumanMessage, SystemMessage, AIMessage
 from agents.prediction_agent import PredictionAgent
 from agents.compliance_agent import ComplianceAgent
 from agents.logistics_agent import LogisticsAgent
 from agents.marketing_agent import MarketingAgent
 import os
 from datetime import datetime
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
+
+class DirectAPILLM(BaseLanguageModel):
+    """Custom LLM wrapper that uses direct Azure OpenAI API calls"""
+
+    endpoint: str
+    deployment: str
+    api_version: str
+    api_key: str
+    temperature: float = 0.7
+    url: str = ""
+    headers: Dict[str, str] = {}
+
+    class Config:
+        arbitrary_types_allowed = True
+
+    def __init__(self, endpoint: str, deployment: str, api_version: str, api_key: str, temperature: float = 0.7):
+        url = f"{endpoint}/openai/deployments/{deployment}/chat/completions?api-version={api_version}"
+        headers = {
+            "Content-Type": "application/json",
+            "api-key": api_key
+        }
+        super().__init__(
+            endpoint=endpoint,
+            deployment=deployment,
+            api_version=api_version,
+            api_key=api_key,
+            temperature=temperature,
+            url=url,
+            headers=headers
+        )
+    
+    def _convert_messages_to_api_format(self, messages: List[BaseMessage]) -> List[Dict[str, str]]:
+        """Convert LangChain messages to API format"""
+        api_messages = []
+        for msg in messages:
+            if isinstance(msg, SystemMessage):
+                api_messages.append({"role": "system", "content": msg.content})
+            elif isinstance(msg, HumanMessage):
+                api_messages.append({"role": "user", "content": msg.content})
+            elif isinstance(msg, AIMessage):
+                api_messages.append({"role": "assistant", "content": msg.content})
+            else:
+                # Default to user role for unknown message types
+                api_messages.append({"role": "user", "content": str(msg.content)})
+        return api_messages
+    
+    def invoke(self, messages: List[BaseMessage], **kwargs) -> AIMessage:
+        """Make API call and return response"""
+        api_messages = self._convert_messages_to_api_format(messages)
+        
+        payload = {
+            "messages": api_messages,
+            "temperature": kwargs.get("temperature", self.temperature),
+            "max_tokens": kwargs.get("max_tokens", 800)
+        }
+        
+        response = requests.post(self.url, headers=self.headers, json=payload)
+        
+        if response.status_code != 200:
+            raise Exception(f"API call failed: {response.status_code} - {response.text}")
+        
+        result = response.json()
+        content = result["choices"][0]["message"]["content"]
+        return AIMessage(content=content)
+    
+    def generate(self, messages: List[List[BaseMessage]], **kwargs):
+        """Generate responses for multiple message sets"""
+        results = []
+        for msg_set in messages:
+            result = self.invoke(msg_set, **kwargs)
+            results.append(result)
+        return results
+    
+    def predict(self, text: str, **kwargs) -> str:
+        """Predict based on text input"""
+        messages = [HumanMessage(content=text)]
+        response = self.invoke(messages, **kwargs)
+        return response.content
+    
+    def predict_messages(self, messages: List[BaseMessage], **kwargs) -> AIMessage:
+        """Predict based on messages"""
+        return self.invoke(messages, **kwargs)
+    
+    def test_connection(self) -> bool:
+        """Test the API connection"""
+        try:
+            messages = [{"role": "user", "content": "test"}]
+            payload = {
+                "messages": messages,
+                "temperature": 0.1,
+                "max_tokens": 10
+            }
+            response = requests.post(self.url, headers=self.headers, json=payload)
+            return response.status_code == 200
+        except Exception as e:
+            raise Exception(f"Connection test failed: {str(e)}")
+    
+    @property
+    def _llm_type(self) -> str:
+        """Return identifier of llm type."""
+        return "azure-direct-api"
+    
+    def _generate(self, messages, **kwargs):
+        """Required by BaseLanguageModel"""
+        return self.generate([messages], **kwargs)
+    
+    async def _agenerate(self, messages, **kwargs):
+        """Async version - not implemented for now"""
+        raise NotImplementedError("Async generation not implemented")
+
+    def generate_prompt(self, prompts, **kwargs):
+        """Generate responses for string prompts"""
+        results = []
+        for prompt in prompts:
+            messages = [HumanMessage(content=prompt)]
+            result = self.invoke(messages, **kwargs)
+            results.append(result.content)
+        return results
+
+    async def agenerate_prompt(self, prompts, **kwargs):
+        """Async version - not implemented for now"""
+        raise NotImplementedError("Async prompt generation not implemented")
+
 
 class EventPlanningCrew:
     def __init__(self, api_key=None):
-        # Set OpenAI API key as environment variable for CrewAI
-        os.environ['OPENAI_API_KEY'] = api_key if api_key else "8ddb5a18dadf4f68a5e86d16935f5448"
+        # Get API key from environment variable or parameter
+        openai_key = api_key if api_key else os.getenv('OPENAI_API_KEY')
 
-        # Initialize LLM with OpenAI GPT
-        self.llm = ChatOpenAI(
-            model="gpt-o4-mini",
-            temperature=0.7,
-            api_key="8ddb5a18dadf4f68a5e86d16935f5448"
-        )
+        if not openai_key:
+            raise ValueError("OpenAI API key not found. Please set OPENAI_API_KEY in .env file")
+
+        # Set OpenAI API key as environment variable for CrewAI
+        os.environ['OPENAI_API_KEY'] = openai_key
+        os.environ['AZURE_OPENAI_API_KEY'] = openai_key
+        os.environ['AZURE_OPENAI_ENDPOINT'] = "https://apim-n1ai-uks-neb1-01.azure-api.net/"
+
+        # Try different configurations with fallback
+        self.llm = self._initialize_llm(openai_key)
         
         # Initialize agents
         self.prediction_agent = PredictionAgent(self.llm)
@@ -27,7 +163,82 @@ class EventPlanningCrew:
         
         # Agent thinking logs (for UI display)
         self.thinking_log = []
-    
+
+    def _initialize_llm(self, api_key):
+        """
+        Initialize LLM with direct API calls matching the reference pattern
+        """
+        endpoint = "https://apim-n1ai-uks-neb1-01.azure-api.net"
+
+        # Try different configurations in order of preference
+        configurations = [
+            # Try gpt-4.1-mini with latest API version (matching reference)
+            {
+                "deployment": "gpt-4.1-mini",
+                "api_version": "2025-04-01-preview",
+                "description": "gpt-4.1-mini with 2025-04-01-preview"
+            },
+            # Fallback options
+            {
+                "deployment": "gpt-4o-mini",
+                "api_version": "2024-08-01-preview",
+                "description": "gpt-4o-mini with 2024-08-01-preview"
+            },
+            {
+                "deployment": "gpt-4o-mini",
+                "api_version": "2024-06-01",
+                "description": "gpt-4o-mini with 2024-06-01"
+            },
+            {
+                "deployment": "gpt-4-mini",
+                "api_version": "2024-08-01-preview",
+                "description": "gpt-4-mini with 2024-08-01-preview"
+            },
+        ]
+
+        last_error = None
+
+        for config in configurations:
+            try:
+                print(f"[LLM INIT] Trying: {config['description']}")
+
+                # Create a custom LLM wrapper that uses direct API calls
+                llm = DirectAPILLM(
+                    endpoint=endpoint,
+                    deployment=config["deployment"],
+                    api_version=config["api_version"],
+                    api_key=api_key,
+                    temperature=0.7
+                )
+
+                # Test the connection with a simple call
+                test_response = llm.test_connection()
+
+                print(f"[LLM INIT] SUCCESS: Successfully initialized: {config['description']}")
+                return llm
+
+            except Exception as e:
+                error_msg = str(e)
+                print(f"[LLM INIT] FAILED: {config['description']}: {error_msg[:100]}")
+                last_error = e
+
+                # If it's a deployment not allowed error, try next config
+                if "DeploymentNotAllowed" in error_msg or "403" in error_msg:
+                    continue
+                # If it's an auth error, no point trying other configs
+                elif "401" in error_msg or "invalid" in error_msg.lower():
+                    raise ValueError(f"Authentication failed: {error_msg}")
+                # For other errors, try next config
+                else:
+                    continue
+
+        # If all configurations failed
+        raise ValueError(
+            f"Could not initialize Azure OpenAI with any configuration. "
+            f"Last error: {last_error}. "
+            f"Please check your Azure subscription and deployment settings."
+        )
+
     def plan_event(self, event_details, show_thinking=True):
         """
         Main orchestration function - agents work together

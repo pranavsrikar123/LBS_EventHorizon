@@ -1,0 +1,141 @@
+{
+  "session_id": "event_20251122_133815",
+  "created_at": "2025-11-22T13:38:15.990497",
+  "event_details": {
+    "name": "AI & Entrepreneurship Summit",
+    "type": "Technology",
+    "date": "2025-12-13",
+    "time": "18:00:00",
+    "venue": "Nash Lounge",
+    "size": 150,
+    "alcohol": false,
+    "external": false,
+    "tags": [
+      "AI & Machine Learning",
+      "Entrepreneurship"
+    ],
+    "programs": [
+      "MBA2025"
+    ]
+  },
+  "initial_results": {
+    "prediction": {
+      "interested_pool": 165,
+      "expected_registration": 132,
+      "predicted_attendance": 118,
+      "flake_rate": 10,
+      "confidence": "HIGH",
+      "reasoning": "**STEP 1: AUDIENCE POOL ANALYSIS**\nTarget Programs: MBA2025\nTotal Student Pool: 500 students across selected programs\n\nInterest Analysis:\n- Event Type \"Technology\": Base interest rate 33%\n- Tag Adjustments: +8-10%\n- Interested Pool: 165 students\n\n**STEP 2: REGISTRATION FORECAST**\nDay Impact: Thursday = 95% registration rate\nTime Impact: 18:00 = 100% optimal timing\nNo Alcohol: 0%\nInternal Only: 0%\n\nFormula: 165 \u00d7 0.95 \u00d7 1.00 \u00d7 1.00 \u00d7 1.00\nPredicted Registrations: 132\n\n**STEP 3: FLAKE RATE CALCULATION**\nBase Flake Rate: 20%\n- Thursday adjustment: -10%\n- Time 18:00 adjustment: 0%\n- Event type \"Technology\": 0%\n- No alcohol: 0%\n\nFinal Flake Rate: 10%\n\n**STEP 4: FINAL PREDICTION**\n132 registrations \u00d7 (1 - 10.00%) = 118 actual attendees",
+      "recommendations": [],
+      "breakdown": {
+        "total_pool": 500,
+        "interest_rate": 0.33,
+        "day_factor": 0.95,
+        "time_factor": 1.0,
+        "alcohol_boost": 1.0,
+        "speaker_boost": 1.0
+      }
+    },
+    "compliance": {
+      "venue_suitable": false,
+      "issues": [
+        "Capacity issue: Nash Lounge holds 120, you need 132"
+      ],
+      "alternatives": [
+        "Sainsbury Theatre (capacity: 250)",
+        "Windsor Theatre (capacity: 180)",
+        "Sammy Ofer Centre - Garden (capacity: 400)"
+      ],
+      "actions_required": [
+        "Book venue at least 7 days in advance"
+      ],
+      "reasoning": "\n**VENUE ANALYSIS: Nash Lounge**\nCapacity: 120 (Required: 132)\nAlcohol Permitted: \u2705 Yes\nAV Equipment: \u274c Not available\nBooking Lead Time: 7 days\nCost: \u00c2\u00a3\u00c2\u00a3\n\n**COMPLIANCE CHECK:**\n\u274c Issues found - see below\n",
+      "venue_info": {
+        "capacity": 120,
+        "alcohol_permitted": true,
+        "av_equipped": false,
+        "license_note": "Catering must be notified 30 days ahead for alcohol",
+        "ideal_for": "Networking, Social events, Panels",
+        "booking_lead_time": 7,
+        "cost_indicator": "\u00c2\u00a3\u00c2\u00a3"
+      }
+    },
+    "logistics": {
+      "timeline": [
+        [
+          "Nov 13",
+          "Submit alcohol request (if required)"
+        ],
+        [
+          "Nov 22",
+          "Open event registration"
+        ],
+        [
+          "Nov 29",
+          "External speaker security clearance due"
+        ],
+        [
+          "Dec 06",
+          "Send first reminder email"
+        ],
+        [
+          "Dec 11",
+          "Finalize headcount with catering"
+        ],
+        [
+          "Dec 13",
+          "\ud83c\udf89 Event Day!"
+        ]
+      ],
+      "budget": 3450,
+      "predicted_waste": 350,
+      "catering_cost": 2950,
+      "venue_cost": 500,
+      "av_cost": 0,
+      "reasoning": "\n**BUDGET OPTIMIZATION ANALYSIS**\n\nCatering Strategy:\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\nTraditional Approach (Order for all registered):\n- 132 registrations \u00d7 \u00a325 per person\n- Total: \u00a33,300\n\n\u26a0\ufe0f THE PROBLEM:\nBased on 10% predicted flake rate, only 118 will actually attend.\n- Unused meals: 14\n- Wasted food cost: 14 \u00d7 \u00a325 = \u00a3350\n\n\u2705 SMART APPROACH (Order for predicted attendance):\n- 118 predicted attendees \u00d7 \u00a325\n- Catering cost: \u00a32,950\n- **SAVINGS: \u00a3350**\n\nAdditional Costs:\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\nVenue: \u00a3500 (\u00c2\u00a3\u00c2\u00a3)\nAV: Included\n\n**TOTAL SMART BUDGET: \u00a33,450**\n\n\ud83d\udca1 Key Insight: Order for 118, not 132\nThis prevents \u00a3350 in wasted catering!\n",
+      "breakdown": {
+        "cost_per_head": 25,
+        "smart_order_quantity": 118,
+        "waste_if_overorder": 350
+      }
+    },
+    "marketing": {
+      "personas": [
+        {
+          "name": "Students passionate about technology, AI, and startups",
+          "id": "tech_innovators",
+          "conversion": "85%",
+          "avg_attendance": 75,
+          "motivators": "Learning new technologies, Networking with tech professionals"
+        },
+        {
+          "name": "Students building startups or interested in entrepreneurship",
+          "id": "entrepreneurs",
+          "conversion": "78%",
+          "avg_attendance": 80,
+          "motivators": "Finding co-founders, VC connections"
+        },
+        {
+          "name": "Highly focused students attending career-advancing events",
+          "id": "career_climbers",
+          "conversion": "70%",
+          "avg_attendance": 90,
+          "motivators": "Career advancement, Recruiting opportunities"
+        }
+      ],
+      "expected_boost": 31,
+      "reasoning": "\n**TARGET AUDIENCE IDENTIFICATION**\n\nBased on event type \"Technology\" and tags, identified 3 key personas:\n\n1. **Students passionate about technology, AI, and startups**\n   - Conversion Rate: 85%\n   - Key Motivators: Learning new technologies, Networking with tech professionals\n\n2. **Students building startups or interested in entrepreneurship**\n   - Conversion Rate: 78%\n   - Key Motivators: Finding co-founders, VC connections\n\n3. **Highly focused students attending career-advancing events**\n   - Conversion Rate: 70%\n   - Key Motivators: Career advancement, Recruiting opportunities\n\n**EXPECTED IMPACT:**\nTargeted marketing to these personas can boost attendance by 31% vs. generic approach.\n\n**RECOMMENDATION:**\nCreate personalized email campaigns for each persona type, emphasizing their specific motivators.\n"
+    }
+  },
+  "conversation_history": [],
+  "agent_notes": {
+    "Prediction Agent": [],
+    "Compliance Agent": [],
+    "Logistics Agent": [],
+    "Marketing Agent": []
+  },
+  "metadata": {
+    "total_questions": 0,
+    "agents_consulted": []
+  }
+}

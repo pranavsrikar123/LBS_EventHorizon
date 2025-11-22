@@ -1,17 +1,38 @@
 """
 Module for handling individual agent queries with Chain of Thought reasoning
+Now powered by the Supervisor Agent for intelligent routing
 """
 from crewai import Agent, Task, Crew
-from typing import Dict, Any
-import io
-import sys
+from typing import Dict, Any, Optional
+from .supervisor_agent import SupervisorAgent
+from .context_store import get_context_store
 
 
 class AgentInteraction:
-    """Handle individual agent queries and capture their reasoning"""
+    """
+    Handle individual agent queries using the Supervisor Agent
+
+    This class now uses intelligent routing via the SupervisorAgent instead of
+    requiring users to manually select which agent to query.
+    """
 
     def __init__(self, crew_instance):
+        """
+        Initialize the agent interaction handler
+
+        Args:
+            crew_instance: The EventPlanningCrew instance with all agents
+        """
         self.crew = crew_instance
+        self.context_store = get_context_store()
+
+        # Initialize the Supervisor Agent for intelligent routing
+        self.supervisor = SupervisorAgent(
+            llm=crew_instance.llm,
+            crew_instance=crew_instance
+        )
+
+        # Keep the direct agent map for backwards compatibility if needed
         self.agent_map = {
             "Prediction Agent": self.crew.prediction_agent.agent,
             "Compliance Agent": self.crew.compliance_agent.agent,
@@ -19,25 +40,108 @@ class AgentInteraction:
             "Marketing Agent": self.crew.marketing_agent.agent
         }
 
-    def query_agent(self, agent_name: str, question: str, context: Dict = None) -> Dict[str, Any]:
+    def query_agent(
+        self,
+        agent_name: str,
+        question: str,
+        context: Dict = None,
+        use_supervisor: bool = True
+    ) -> Dict[str, Any]:
         """
-        Query a specific agent and capture its reasoning
+        Query an agent with a question
+
+        NOW WITH INTELLIGENT ROUTING: If use_supervisor=True (default), the
+        supervisor will analyze the question and route it to the most appropriate
+        agent(s) automatically, ignoring the agent_name parameter.
+
+        Args:
+            agent_name: DEPRECATED - kept for backwards compatibility
+            question: The user's question
+            context: Optional event context
+            use_supervisor: If True, use supervisor for intelligent routing (default)
 
         Returns:
-            Dict with 'answer' and 'reasoning' keys
+            Dict with 'answer', 'reasoning', and 'agent_name' keys
+        """
+        if use_supervisor:
+            # Use the intelligent supervisor agent to route the question
+            return self._query_with_supervisor(question, context)
+        else:
+            # Legacy direct querying (kept for backwards compatibility)
+            return self._query_direct(agent_name, question, context)
+
+    def _query_with_supervisor(self, question: str, context: Dict = None) -> Dict[str, Any]:
+        """
+        Query using the supervisor agent for intelligent routing
+
+        This is the new recommended approach that doesn't require manual agent selection
+        """
+        try:
+            # Build event context
+            event_context = self._build_event_context(context)
+
+            print(f"\n[DEBUG] Question received: {question}")
+            print(f"[DEBUG] Event context keys: {list(event_context.keys())}")
+
+            # Let the supervisor route and handle the question
+            result = self.supervisor.route_question(question, event_context)
+
+            print(f"[DEBUG] Routing result - Agent used: {result.get('agents_used', 'Unknown')}")
+            print(f"[DEBUG] Has answer: {bool(result.get('answer'))}")
+            print(f"[DEBUG] Error if any: {result.get('error', 'None')}")
+
+            # Log the interaction to context store
+            if self.context_store.current_session_id:
+                self.context_store.add_conversation(
+                    session_id=self.context_store.current_session_id,
+                    question=question,
+                    answer=result.get('answer', ''),
+                    agent_used=result.get('agents_used', ['Supervisor Agent']),
+                    reasoning=result.get('reasoning', '')
+                )
+
+            return {
+                'answer': result.get('answer', 'No response generated'),
+                'reasoning': result.get('reasoning', 'Analysis completed'),
+                'agent_name': ', '.join(result.get('agents_used', ['Supervisor Agent'])),
+                'supervisor_routing': result.get('supervisor_reasoning', '')
+            }
+
+        except Exception as e:
+            import traceback
+            error_trace = traceback.format_exc()
+            print(f"\n[ERROR] Exception in _query_with_supervisor:")
+            print(error_trace)
+
+            # Provide a clear error message
+            return {
+                'answer': f"Error processing question: {str(e)}\n\nPlease check the console for details.",
+                'reasoning': f"Error details: {error_trace}",
+                'agent_name': 'Supervisor Agent',
+                'error': str(e)
+            }
+
+    def _query_direct(self, agent_name: str, question: str, context: Dict = None) -> Dict[str, Any]:
+        """
+        Legacy direct agent querying (without supervisor routing)
+
+        This method is kept for backwards compatibility but is not recommended.
+        Use the supervisor-based routing instead.
         """
         agent = self.agent_map.get(agent_name)
         if not agent:
             return {
                 'answer': f"Agent {agent_name} not found",
-                'reasoning': "Agent not available"
+                'reasoning': "Agent not available",
+                'agent_name': agent_name
             }
 
-        # Build context string if provided
+        # Build context string
+        event_context = self._build_event_context(context)
         context_str = ""
-        if context:
-            context_str = f"\n\nContext from previous analysis:\n"
-            for key, value in context.items():
+        if event_context:
+            context_str = "\n\nEVENT CONTEXT:\n"
+            for key, value in event_context.items():
                 context_str += f"- {key}: {value}\n"
 
         # Create a task for the agent
@@ -68,36 +172,66 @@ class AgentInteraction:
             # Execute the task
             result = mini_crew.kickoff()
 
-            return {
+            response = {
                 'answer': str(result),
-                'reasoning': f"Agent processed query: {question}\n\nAnalysis completed using available tools and knowledge.",
+                'reasoning': f"Analysis completed by {agent_name} using specialized tools and domain expertise.",
                 'agent_name': agent_name
             }
+
+            # Log to context store
+            if self.context_store.current_session_id:
+                self.context_store.add_conversation(
+                    session_id=self.context_store.current_session_id,
+                    question=question,
+                    answer=response['answer'],
+                    agent_used=agent_name,
+                    reasoning=response['reasoning']
+                )
+
+            return response
+
         except Exception as e:
-            # Provide a helpful fallback response
             return {
-                'answer': f"I understand you're asking about: {question}\n\nBased on the event context, here's my analysis:\n\n{self._generate_fallback_response(agent_name, question, context)}",
-                'reasoning': f"Note: Direct agent query encountered an issue ({str(e)}). Providing context-based response.",
-                'agent_name': agent_name
+                'answer': f"Error querying {agent_name}: {str(e)}",
+                'reasoning': f"Technical issue occurred: {str(e)}",
+                'agent_name': agent_name,
+                'error': str(e)
             }
 
-    def _generate_fallback_response(self, agent_name: str, question: str, context: Dict) -> str:
-        """Generate a contextual fallback response when direct querying fails"""
-        event_name = context.get('event_name', 'your event')
-        venue = context.get('venue', 'the selected venue')
-        size = context.get('expected_size', 'the expected attendance')
+    def _build_event_context(self, context: Dict = None) -> Dict:
+        """Build comprehensive event context from various sources"""
+        event_context = {}
 
-        responses = {
-            "Prediction Agent": f"For {event_name} at {venue}, I would analyze historical patterns of similar events. With {size} expected attendees, I'd examine factors like day of week, time, competing events, and weather patterns to provide an accurate attendance prediction.",
+        # Start with provided context
+        if context:
+            event_context.update(context)
 
-            "Compliance Agent": f"For {event_name} at {venue}, I would check venue capacity restrictions, alcohol licensing requirements (30-day advance notice needed), security clearance for external speakers, and ensure all LBS policies are followed.",
+        # Enhance with context store if available
+        if self.context_store.current_session_id:
+            stored_context = self.context_store.get_current_context()
+            if stored_context:
+                event_details = stored_context.get('event_details', {})
+                event_context.update(event_details)
 
-            "Logistics Agent": f"For {event_name} with {size} attendees, I would create a detailed timeline starting from T-30 days, calculate catering costs based on predicted (not registered) attendance to minimize waste, coordinate AV setup, and ensure all booking requirements are met.",
+        return event_context
 
-            "Marketing Agent": f"For {event_name} targeting your selected programs, I would identify 3-4 key student personas, create tailored messaging for each, recommend optimal communication timing, and suggest strategies to boost attendance by 25-35%."
-        }
+    def initialize_context(self, event_details: Dict, results: Dict = None):
+        """
+        Initialize context for a new event session
 
-        return responses.get(agent_name, "I would analyze this question in the context of your event details and provide specific recommendations based on LBS historical data.")
+        Args:
+            event_details: Dictionary with event information
+            results: Optional initial analysis results
+        """
+        session_id = self.context_store.create_session(event_details)
+
+        if results:
+            self.context_store.store_initial_results(session_id, results)
+
+        # Also update the supervisor's context
+        self.supervisor.store_context(event_details, results)
+
+        return session_id
 
 
 def format_agent_reasoning(reasoning: str) -> list:

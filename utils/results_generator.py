@@ -26,10 +26,10 @@ class EventAnalyzer:
 
         # Estimate interested students per program
         program_sizes = {
-            'MBA2025': 500, 'MBA2024': 480, 'MiM2025': 180, 'MiM2024': 170,
+            'MBA2025': 500, 'MBA2024': 480,
             'EMBA': 120, 'EMBA-Global': 90, 'Sloan Masters': 55,
-            'MAM (Masters in Analytics & Management)': 65,
-            'MFA (Masters in Financial Analysis)': 45,
+            'MAM': 85,
+            'MFA': 400, 'MiM': 300,
             'Executive Education': 200, 'PhD Students': 80,
             'Alumni': 1000, 'Faculty & Staff': 150
         }
@@ -426,6 +426,9 @@ This prevents £{waste_if_overorder:,} in wasted catering!
 
         expected_boost = sum(p['avg_attendance'] for p in personas) // len(personas) - 50
 
+        # Get relevant clubs
+        clubs = self._get_relevant_clubs(tags, event_type)
+
         reasoning = f"""
 **TARGET AUDIENCE IDENTIFICATION**
 
@@ -443,18 +446,57 @@ Based on event type "{event_type}" and tags, identified {len(personas)} key pers
    - Conversion Rate: {personas[2]['conversion']}
    - Key Motivators: {personas[2]['motivators']}
 
+**RECOMMENDED CLUBS TO REACH OUT TO:**
+{', '.join(clubs)}
+
 **EXPECTED IMPACT:**
 Targeted marketing to these personas can boost attendance by {expected_boost}% vs. generic approach.
 
 **RECOMMENDATION:**
-Create personalized email campaigns for each persona type, emphasizing their specific motivators.
+Create personalized email campaigns for each persona type, emphasizing their specific motivators. Partner with {clubs[0]} for co-promotion.
 """
 
         return {
             'personas': personas,
             'expected_boost': expected_boost,
+            'clubs': clubs,
             'reasoning': reasoning
         }
+
+    def _get_relevant_clubs(self, tags: List[str], event_type: str) -> List[str]:
+        """Match event tags to relevant LBS clubs"""
+        # Club database with keywords
+        club_mapping = {
+            'Tech Club': ['AI & Machine Learning', 'Technology', 'Data Science', 'Fintech', 'EdTech', 'Digital Transformation', 'Product Management'],
+            'Entrepreneurship Club': ['Entrepreneurship', 'Innovation', 'Venture Capital', 'Strategy'],
+            'Finance Club': ['Investment Banking', 'Private Equity', 'Finance', 'Financial Analysis', 'Real Estate'],
+            'Consulting Club': ['Consulting', 'Strategy', 'Operations', 'Supply Chain', 'Management'],
+            'Marketing Club': ['Marketing & Brand', 'Digital Transformation', 'Product Management'],
+            'Sustainability Club': ['Sustainability & ESG', 'Social Impact'],
+            'Healthcare Club': ['Healthcare', 'Life Sciences'],
+            'Private Equity Club': ['Private Equity', 'Investment Banking', 'Finance'],
+            'Venture Capital Club': ['Venture Capital', 'Entrepreneurship', 'Innovation'],
+            'Blockchain Society': ['Blockchain & Web3', 'Fintech', 'Technology'],
+            'Women in Business': ['Diversity & Inclusion', 'Leadership', 'Career Development'],
+            'Analytics Club': ['Data Science', 'AI & Machine Learning', 'Analytics'],
+            'Real Estate Club': ['Real Estate', 'Investment'],
+            'Luxury & Retail Club': ['Marketing & Brand', 'Luxury'],
+            'Social Impact Club': ['Sustainability & ESG', 'Social Impact', 'Charity']
+        }
+
+        matched_clubs = []
+        for club, keywords in club_mapping.items():
+            # Check if any tag matches the club's keywords
+            if any(tag in keywords for tag in tags):
+                if club not in matched_clubs:
+                    matched_clubs.append(club)
+            # Also check event type
+            if event_type in keywords:
+                if club not in matched_clubs:
+                    matched_clubs.append(club)
+
+        # Return top 3-5 clubs
+        return matched_clubs[:5] if matched_clubs else ['General MBA Community', 'Student Association']
 
 
 def generate_comprehensive_results(event_details: Dict, students, venues, events) -> Dict:

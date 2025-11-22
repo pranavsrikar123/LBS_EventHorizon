@@ -1,0 +1,385 @@
+/* Main container styling */
+body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Headers */
+h1 {
+    color: #1e3a8a;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+h2, h3, h4 {
+    color: #1e40af;
+    font-weight: 600;
+}
+
+/* Input styling improvements */
+.Select-control,
+input[type="text"],
+input[type="time"],
+.form-control {
+    border: 2px solid #cbd5e1;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.Select-control:hover,
+input[type="text"]:hover,
+input[type="time"]:hover,
+.form-control:hover {
+    border-color: #3b82f6;
+}
+
+.Select-control:focus,
+input[type="text"]:focus,
+input[type="time"]:focus,
+.form-control:focus {
+    border-color: #1e40af;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Label styling */
+label {
+    font-weight: 600;
+    color: #1e40af;
+    margin-bottom: 8px;
+}
+
+/* Agent cards */
+.agent-thinking {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-left: 5px solid #fbbf24;
+    padding: 15px;
+    margin: 12px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 14px;
+}
+
+.agent-decision {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    border-left: 5px solid #34d399;
+    padding: 15px;
+    margin: 12px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    min-height: 140px;
+    max-height: 600px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.agent-warning {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: white;
+    border-left: 5px solid #fbbf24;
+    padding: 15px;
+    margin: 12px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    min-height: 140px;
+    max-height: 600px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Buttons */
+.btn {
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* Cards */
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Sidebar */
+.sidebar {
+    background: linear-gradient(180deg, #1e3a8a 0%, #1e40af 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    min-height: 600px;
+}
+
+.sidebar h4 {
+    color: white;
+}
+
+/* Sidebar agent headers */
+.sidebar-agent-header {
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.sidebar-agent-header:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(5px);
+}
+
+.sidebar-agent-header strong {
+    color: white;
+}
+
+.sidebar-agent-header i {
+    color: rgba(255, 255, 255, 0.8);
+    transition: transform 0.3s ease;
+}
+
+/* Sidebar expanded content - fix text visibility */
+.sidebar .bg-light {
+    background: rgba(255, 255, 255, 0.95) !important;
+}
+
+.sidebar .bg-light p,
+.sidebar .bg-light .small {
+    color: #1e293b !important;
+    font-weight: 500;
+}
+
+.sidebar .bg-light strong {
+    color: #1e40af !important;
+}
+
+/* Fix text-muted in sidebar */
+.sidebar .text-muted {
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* Agent expand icons in results */
+.agent-expand-icon {
+    color: rgba(255, 255, 255, 0.9);
+    transition: all 0.3s ease;
+}
+
+.agent-expand-icon:hover {
+    color: white;
+    transform: scale(1.2);
+}
+
+/* Detailed analysis cards */
+.detailed-analysis-card {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Reasoning markdown formatting */
+.reasoning-markdown {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    line-height: 1.8;
+    color: #1e293b;
+    background: #f1f5f9;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #3b82f6;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.reasoning-markdown h1,
+.reasoning-markdown h2 {
+    color: #1e40af;
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #3b82f6;
+    padding-bottom: 5px;
+}
+
+.reasoning-markdown h3 {
+    color: #1e40af;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 15px;
+    margin-bottom: 8px;
+}
+
+.reasoning-markdown strong {
+    color: #0f172a;
+    font-weight: 700;
+}
+
+.reasoning-markdown ul,
+.reasoning-markdown ol {
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.reasoning-markdown li {
+    margin-bottom: 5px;
+}
+
+.reasoning-markdown p {
+    margin-bottom: 12px;
+}
+
+.reasoning-markdown code {
+    background: #dbeafe;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #1e40af;
+    font-size: 12px;
+}
+
+/* Custom scrollbar for reasoning sections */
+.reasoning-markdown::-webkit-scrollbar {
+    width: 8px;
+}
+
+.reasoning-markdown::-webkit-scrollbar-track {
+    background: #e2e8f0;
+    border-radius: 4px;
+}
+
+.reasoning-markdown::-webkit-scrollbar-thumb {
+    background: #3b82f6;
+    border-radius: 4px;
+}
+
+.reasoning-markdown::-webkit-scrollbar-thumb:hover {
+    background: #1e40af;
+}
+
+/* Custom scrollbar for agent decision boxes */
+.agent-decision::-webkit-scrollbar,
+.agent-warning::-webkit-scrollbar {
+    width: 8px;
+}
+
+.agent-decision::-webkit-scrollbar-track,
+.agent-warning::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+.agent-decision::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 4px;
+}
+
+.agent-decision::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.agent-warning::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 4px;
+}
+
+.agent-warning::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+/* Improve alert styling */
+.alert {
+    border-radius: 10px;
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Improve dropdown styling */
+.Select-menu-outer {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Improve date picker styling */
+.DateInput_input {
+    border-radius: 8px;
+    border: 2px solid #cbd5e1;
+}
+
+/* Smooth transitions */
+* {
+    transition: all 0.2s ease;
+}
+
+/* Add hover effect to cards */
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Processing animation enhancement */
+.agent-thinking {
+    animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Improve button group styling */
+.btn-group .btn {
+    margin: 0 5px;
+}
+
+/* Add subtle pulse to active agents */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}
+
+.agent-decision {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Stop animation on hover */
+.agent-decision:hover {
+    animation: none;
+}
+
+/* Ensure markdown content inside agent decision boxes wraps properly */
+.agent-decision .markdown,
+.agent-decision p,
+.agent-warning .markdown,
+.agent-warning p {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    max-width: 100%;
+}
+
+/* Ensure text-white class maintains visibility */
+.agent-decision .text-white,
+.agent-warning .text-white {
+    color: white !important;
+}
