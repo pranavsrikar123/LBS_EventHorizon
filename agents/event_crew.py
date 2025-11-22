@@ -1,5 +1,5 @@
 from crewai import Crew, Task
-from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_openai import ChatOpenAI
 from agents.prediction_agent import PredictionAgent
 from agents.compliance_agent import ComplianceAgent
 from agents.logistics_agent import LogisticsAgent
@@ -9,11 +9,14 @@ from datetime import datetime
 
 class EventPlanningCrew:
     def __init__(self, api_key=None):
-        # Initialize LLM (will use GPT-5 later)
-        self.llm = ChatGoogleGenerativeAI(
-            model="gemini-1.5-flash",
+        # Set OpenAI API key as environment variable for CrewAI
+        os.environ['OPENAI_API_KEY'] = api_key if api_key else "8ddb5a18dadf4f68a5e86d16935f5448"
+
+        # Initialize LLM with OpenAI GPT
+        self.llm = ChatOpenAI(
+            model="gpt-o4-mini",
             temperature=0.7,
-            api_key= "AIzaSyBQp7y7VLNbyd6Vfo2uzYB0KhxdgctuFws"
+            api_key="8ddb5a18dadf4f68a5e86d16935f5448"
         )
         
         # Initialize agents

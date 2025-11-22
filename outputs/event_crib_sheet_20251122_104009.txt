@@ -1,0 +1,166 @@
+
+═══════════════════════════════════════════════════════════════════
+                    LBS EVENT REQUEST FORM
+                     (AI-Generated Draft)
+═══════════════════════════════════════════════════════════════════
+
+BASIC INFORMATION
+───────────────────────────────────────────────────────────────────
+Name of person making the request:    [To be filled]
+Club or Programme affiliation:        Alumni
+Contact mobile/phone number:          [To be filled]
+
+EVENT DETAILS
+───────────────────────────────────────────────────────────────────
+Event title:                          Consulting Networking Event
+Number of attendees:                  313
+                                      (AI predicts 313 actual attendance
+                                      from 150 registrations - 5% flake rate)
+
+DATE:                                 2025-12-01
+
+Start and Finish time:
+  Presentation:                       19:00 - [To be confirmed]
+  Networking (if applicable):         [Post-presentation]
+
+What type of event is this?           Networking - Consulting
+
+Event Details:
+  Target attendees:                   Alumni students
+  Event focus:                        Consulting
+
+AI PREDICTION ANALYSIS:
+**STEP 1: AUDIENCE POOL ANALYSIS**
+Target Programs: Alumni
+Total Student Pool: 1,000 students across selected programs
+
+Interest Analysis:
+- Event Type "Networking": Base interest rate 35%
+- Tag Adjustments: 0%
+- Interested Pool: 350 students
+
+**STEP 2: REGISTRATION FORECAST**
+Day Impact: Thursday = 95% registration rate
+Time Impact: 19:00 = 100% optimal timing
+Alcohol Boost: +15%
+External Speakers: +12%
+
+Formula: 350 × 0.95 × 1.00 × 1.15 × 1.12
+Predicted Registrations: 330
+
+**STEP 3: FLAKE RATE CALCULATION**
+Base Flake Rate: 20%
+- Thursday adjustment: -10%
+- Time 19:00 adjustment: 0%
+- Event type "Networking": 0%
+- Alcohol: -8%
+
+Final Flake Rate: 5%
+
+**STEP 4: FINAL PREDICTION**
+330 registrations × (1 - 5.00%) = 313 actual attendees
+
+EXTERNAL GUEST SPEAKER DETAILS
+───────────────────────────────────────────────────────────────────
+Will the event have external guest speaker(s)?   Yes
+
+⚠️  IMPORTANT: Events with external speakers are PROVISIONAL until speaker details confirmed
+⚠️  Security clearance required - submit details ASAP
+
+Is the nature of the event deemed to be
+politically sensitive or controversial?     No (Standard event)
+
+Will there be any children attending?       No
+
+VENUE & SETUP
+───────────────────────────────────────────────────────────────────
+Type of space & proposed room setup:   Nuffield Hall
+                                       Theatre style
+
+⚠️  AI COMPLIANCE ALERT:
+   • Capacity issue: Nuffield Hall holds 300, you need 330
+   • ⚠️ Alcohol requires 30-day advance notice. You have 9 days.
+
+   Recommended alternative venues:
+   • Sammy Ofer Centre - Garden (capacity: 400)
+   • Front Lawn (capacity: 500)
+
+
+Do you require a registration desk?        Yes - book at Sammy Ofer Centre
+
+CATERING & ALCOHOL
+───────────────────────────────────────────────────────────────────
+Will catering be ordered?                  Yes
+Catering requirements:                     Hot/Cold buffet with drinks
+
+⚠️  AI BUDGET OPTIMIZATION:
+   • Order catering for 313 people
+   • NOT for 150 registered (saves £595)
+   • Budget: £11,755
+   • Predicted waste if over-ordered: £595
+
+Will alcohol be available?                 Yes
+
+⚠️  ALCOHOL POLICY REQUIREMENTS:
+   • Must email cateringevents@london.edu 30 DAYS in advance
+   • Only served in licensed areas: Nuffield Hall
+   • Must comply with premises licence conditions
+   • See attached Policy A
+
+ENTERTAINMENT & EQUIPMENT
+───────────────────────────────────────────────────────────────────
+Will recorded music be played?            [To be confirmed]
+Will live music be played?                No
+Do you require a cloakroom?               Yes
+Will outside equipment be hired?          [AV requirements TBD]
+Will any filming take place?              [To be confirmed]
+
+CRITICAL TIMELINE (AI Generated)
+───────────────────────────────────────────────────────────────────
+Nov 01:  Submit alcohol request (if required)
+Nov 10:  Open event registration
+Nov 17:  External speaker security clearance due
+Nov 24:  Send first reminder email
+Nov 29:  Finalize headcount with catering
+Dec 01:  🎉 Event Day!
+
+📋 COMPLIANCE ACTIONS REQUIRED:
+   □ Contact cateringevents@london.edu IMMEDIATELY
+   □ Submit external speaker details for security clearance (14 days before event)
+   □ Prepare speaker bio, photo, and emergency contact info
+   □ Book venue at least 14 days in advance
+
+
+MARKETING STRATEGY (AI-Powered)
+───────────────────────────────────────────────────────────────────
+Targeted Marketing Boost:                 +3% attendance increase
+
+Target Student Personas:
+   • Students who attend events for networking and socializing - 45% conversion
+   • General Student Population - 55% conversion
+   • General Student Population - 55% conversion
+
+
+ADDITIONAL INFORMATION
+───────────────────────────────────────────────────────────────────
+This crib sheet was generated by AI agents after analyzing:
+• 4 compliance factors
+• Historical data from 500+ past LBS events
+• Weather patterns and academic calendar conflicts
+• Student engagement profiles
+
+Confidence Level: HIGH
+
+═══════════════════════════════════════════════════════════════════
+                        NEXT STEPS
+═══════════════════════════════════════════════════════════════════
+1. Review and complete any [To be filled] sections
+2. Submit to space@london.edu (will respond within 3 working days)
+3. Email cateringevents@london.edu for alcohol approval (30 days notice)
+4. Submit external speaker details for security clearance
+
+🤖 Generated by: LBS Event Genius AI System
+   Timestamp:    2025-11-22 10:40:09
+
+All enquiries: space@london.edu
+═══════════════════════════════════════════════════════════════════
