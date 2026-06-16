@@ -1,0 +1,8 @@
+crewai
+dash
+dash-bootstrap-components
+langchain-core
+pydantic
+python-dotenv
+requests
+streamlit
